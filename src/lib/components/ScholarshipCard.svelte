@@ -1,7 +1,9 @@
 <script lang="ts">
   import type { Scholarship } from '$lib/types/scholarship';
+  import { highlightSearchTerms } from '$lib/utils/search';
 
   export let scholarship: Scholarship;
+  export let searchQuery = '';
 
   function formatLevels(levels: string[]): string {
     if (levels.length === 0) return 'Not specified';
@@ -25,11 +27,11 @@
       <h3 id="scholarship-title-{scholarship.name}" class="text-lg font-semibold text-gray-900 leading-tight">
         {#if scholarship.link}
           <a href={scholarship.link} target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:underline">
-            {scholarship.name}
+            {@html highlightSearchTerms(scholarship.name, searchQuery)}
             <span class="sr-only">(opens in new tab)</span>
           </a>
         {:else}
-          {scholarship.name}
+          {@html highlightSearchTerms(scholarship.name, searchQuery)}
         {/if}
       </h3>
     </div>
@@ -51,7 +53,7 @@
   </header>
 
   <div class="mb-3">
-    <p class="text-sm text-gray-600 leading-relaxed">{scholarship.eligibility}</p>
+    <p class="text-sm text-gray-600 leading-relaxed">{@html highlightSearchTerms(scholarship.eligibility, searchQuery)}</p>
   </div>
 
   <footer class="flex justify-between items-center text-xs text-gray-500">

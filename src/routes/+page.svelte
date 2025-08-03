@@ -3,6 +3,7 @@
   import ScholarshipCard from '$lib/components/ScholarshipCard.svelte';
   import SearchBar from '$lib/components/SearchBar.svelte';
   import FilterSidebar from '$lib/components/FilterSidebar.svelte';
+  import { filterScholarshipsBySearch } from '$lib/utils/search';
 
   export let data: PageData;
 
@@ -41,12 +42,7 @@
 
       // Apply search filter
       if (searchQuery.trim()) {
-        const query = searchQuery.toLowerCase();
-        filtered = filtered.filter(scholarship => 
-          scholarship.name.toLowerCase().includes(query) ||
-          scholarship.eligibility.toLowerCase().includes(query) ||
-          scholarship.includes.toLowerCase().includes(query)
-        );
+        filtered = filterScholarshipsBySearch(filtered, searchQuery);
       }
 
       // Apply level filters
@@ -146,7 +142,7 @@
             <div class="flex flex-col" role="list" aria-label="Scholarship listings">
             {#each displayedScholarships as scholarship (scholarship.name)}
                 <div class="py-2" role="listitem">
-                <ScholarshipCard {scholarship} />
+                <ScholarshipCard {scholarship} {searchQuery} />
                 </div>
             {/each}
             </div>
