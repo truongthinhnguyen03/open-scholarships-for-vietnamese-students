@@ -21,10 +21,10 @@
   }
 </script>
 
-<article class="bg-white border border-gray-200 rounded-lg p-4" aria-labelledby="scholarship-title-{scholarship.name}">
-  <header class="flex justify-between items-start mb-3">
+<article class="bg-white border border-gray-200 rounded-lg p-4 md:p-4" aria-labelledby="scholarship-title-{scholarship.name}">
+  <header class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-3">
     <div class="flex-1">
-      <h3 id="scholarship-title-{scholarship.name}" class="text-lg font-semibold text-gray-900 leading-tight">
+      <h3 id="scholarship-title-{scholarship.name}" class="text-base md:text-lg font-semibold text-gray-900 leading-tight">
         {#if scholarship.link}
           <a href={scholarship.link} target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:underline">
             {@html highlightSearchTerms(scholarship.name, searchQuery)}
@@ -41,7 +41,7 @@
         href={scholarship.link} 
         target="_blank" 
         rel="noopener noreferrer" 
-        class="flex items-center gap-1 bg-blue-500 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-600 transition-colors whitespace-nowrap"
+        class="flex items-center justify-center gap-1 bg-blue-500 text-white px-4 py-3 md:px-4 md:py-2 rounded text-sm font-medium hover:bg-blue-600 transition-colors whitespace-nowrap min-h-[44px]"
         aria-describedby="scholarship-title-{scholarship.name}"
       >
         Apply
@@ -56,8 +56,8 @@
     <p class="text-sm text-gray-600 leading-relaxed">{@html highlightSearchTerms(scholarship.eligibility, searchQuery)}</p>
   </div>
 
-  <footer class="flex justify-between items-center text-xs text-gray-500">
-    <div class="flex gap-4">
+  <footer class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-4 text-xs text-gray-500">
+    <div class="flex flex-wrap gap-4">
       <div class="flex items-center gap-1">
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>

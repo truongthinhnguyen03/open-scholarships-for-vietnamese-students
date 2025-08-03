@@ -14,3 +14,39 @@ mark {
 mark:hover {
   background-color: #fde68a;
 }
+
+/* Mobile-first responsive design */
+@media (max-width: 640px) {
+  /* Ensure minimum touch target size for mobile */
+  button, a, input[type="checkbox"], input[type="radio"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve text readability on mobile */
+  body {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  /* Better spacing for mobile */
+  .mobile-spacing {
+    padding: 1rem;
+  }
+}
+
+/* Tablet-specific adjustments */
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Ensure touch targets are still accessible on tablets */
+  button, a {
+    min-height: 40px;
+    min-width: 40px;
+  }
+}
+
+/* Focus indicators for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}

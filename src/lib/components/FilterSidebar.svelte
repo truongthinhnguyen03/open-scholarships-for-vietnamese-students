@@ -39,13 +39,13 @@
   }
 </script>
 
-<aside class="bg-white border border-gray-200 rounded-lg p-6 h-fit" aria-label="Filter options">
+<aside class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 h-fit" aria-label="Filter options">
   <div class="flex justify-between items-center mb-4">
     <h2 class="text-xl font-semibold text-gray-800">Filter</h2>
     {#if activeFilters.length}
       <button
         type="button"
-        class="px-2 py-1 text-xs border border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded transition-colors"
+        class="px-3 py-2 text-sm border border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded transition-colors min-h-[44px]"
         on:click={clearAllFilters}
         aria-label="Clear all filters"
       >
@@ -64,15 +64,15 @@
     <h3 class="text-base font-semibold text-gray-800 mb-4">Study Level</h3>
     <div class="flex flex-col gap-3" role="group" aria-labelledby="study-level-filters">
       {#each studyLevels as { value, label }}
-        <label class="flex items-center gap-2 cursor-pointer px-2 py-1 rounded hover:bg-gray-50 transition-colors">
+        <label class="flex items-center gap-3 cursor-pointer px-3 py-3 rounded hover:bg-gray-50 transition-colors min-h-[44px]">
           <input
             type="checkbox"
             checked={activeFilters.includes(value)}
             on:change={() => toggleFilter(value)}
-            class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
-          <span class="text-sm text-gray-800">{label}</span>
-          <span class="text-xs text-gray-500 ml-auto">({getFilterCount(value)})</span>
+          <span class="text-sm text-gray-800 flex-1">{label}</span>
+          <span class="text-xs text-gray-500">({getFilterCount(value)})</span>
         </label>
       {/each}
     </div>
@@ -85,7 +85,7 @@
         {#each activeFilters as filter}
           <button
             type="button"
-            class="flex items-center gap-1 bg-blue-500 text-white px-3 py-1.5 rounded text-xs font-medium hover:bg-blue-600 transition-colors capitalize"
+            class="flex items-center gap-1 bg-blue-500 text-white px-3 py-2 rounded text-xs font-medium hover:bg-blue-600 transition-colors capitalize min-h-[44px]"
             on:click={() => toggleFilter(filter as StudyLevel)}
             aria-label="Remove {filter} filter"
           >
